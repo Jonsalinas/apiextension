@@ -1,21 +1,22 @@
-FROM node:18
+# Imagen ligera de Node
+FROM node:18-slim
 
-# Crear carpeta de trabajo
-WORKDIR /
+# Carpeta de trabajo
+WORKDIR /app
 
-# Copiar package.json
+# Copiar solo dependencias primero (mejor cache)
 COPY package*.json ./
 
 # Instalar dependencias
-RUN npm install
+RUN npm install --omit=dev
 
-# Copiar todo el proyecto
+# Copiar el resto del proyecto
 COPY . .
 
-# Puerto que usa Cloud Run
+# Cloud Run usa puerto 8080
 ENV PORT=8080
 
 EXPOSE 8080
 
 # Ejecutar la API
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
