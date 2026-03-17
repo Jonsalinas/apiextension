@@ -11,7 +11,7 @@ const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const SPEECH_LANGUAGE = process.env.SPEECH_LANGUAGE || "es-ES";
 
