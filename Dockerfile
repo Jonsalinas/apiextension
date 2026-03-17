@@ -1,7 +1,7 @@
 FROM node:18
 
 # Crear carpeta de trabajo
-WORKDIR /app
+WORKDIR /
 
 # Copiar package.json
 COPY package*.json ./
