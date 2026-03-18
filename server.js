@@ -27,7 +27,30 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
+/*
 
+para produccion especificar quienes
+const allowedOrigins = [
+  "https://tu-app.vercel.app",
+  "chrome-extension://TU_EXTENSION_ID"
+];
+
+
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("No permitido por CORS"));
+      }
+    },
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+*/
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
