@@ -193,7 +193,7 @@ app.post("/transcribe", upload.single("audio"), async (req, res) => {
     console.log(`🔊 Enviando a Google Speech-to-Text (idioma: ${SPEECH_LANGUAGE})...`);
     const { text, confidence } = await transcribeWithGoogle(flacPath);
     
-    await firestore.collection('usuarios').add({
+    await firestore.collection('ususarios').add({
       primer_nombre: "jon",
       segundo_nombre: "Ger",
       apellido: "Sal",
