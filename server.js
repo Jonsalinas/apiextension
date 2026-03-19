@@ -157,7 +157,7 @@ app.get("/health", (req, res) => {
   res.json({
     status: "ok",
     
-    message: "Backend de transcripción activo ✅ actualizado 4",
+    message: "Backend de transcripción activo ✅ actualizado 5",
     language: SPEECH_LANGUAGE,
     timestamp: new Date().toISOString(),
   });
