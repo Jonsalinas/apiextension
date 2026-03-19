@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
+const { Firestore } = require('@google-cloud/firestore');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -191,6 +192,16 @@ app.post("/transcribe", upload.single("audio"), async (req, res) => {
     // Transcribir con Google Cloud Speech-to-Text
     console.log(`🔊 Enviando a Google Speech-to-Text (idioma: ${SPEECH_LANGUAGE})...`);
     const { text, confidence } = await transcribeWithGoogle(flacPath);
+    
+    await firestore.collection('usuarios').add({
+      primer_nombre: "jon",
+      segundo_nombre: "Ger",
+      apellido: "Sal",
+      correo: "micorreo@gmail.com",
+      password:"123456789"
+    });
+
+    
     console.log(`✅ Transcripción: "${text}"`);
 
     // Limpiar archivos temporales
@@ -249,6 +260,21 @@ app.post("/save-message", (req, res) => {
     data: { text, sender, timestamp, type },
   });
 });
+
+
+
+const db = new Firestore(); 
+
+// Ejemplo para LEER un usuario de tu colección
+async function obtenerUsuario(id) {
+  const userRef = db.collection('usuarios').doc(id);
+  const doc = await userRef.get();
+  if (!doc.exists) {
+    console.log('No existe el usuario');
+  } else {
+    console.log('Datos del usuario:', doc.data());
+  }
+}
 
 // ─────────────────────────────────────────────
 //  INICIAR SERVIDOR
