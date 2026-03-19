@@ -9,6 +9,7 @@ const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 const { Firestore } = require('@google-cloud/firestore');
 
+const firestore = new Firestore(); 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 const app = express();
@@ -264,7 +265,7 @@ app.post("/save-message", (req, res) => {
 
 
 
-const db = new Firestore(); 
+
 
 // Ejemplo para LEER un usuario de tu colección
 async function obtenerUsuario(id) {
