@@ -199,7 +199,7 @@ app.post("/transcribe", upload.single("audio"), async (req, res) => {
       primer_nombre: "jon",
       segundo_nombre: "Ger",
       apellido: "Sal",
-      correo: "micorreo@gmail.com",
+      correo_electronico: "micorreo@gmail.com",
       password:"123456789"
     });
 
