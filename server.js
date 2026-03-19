@@ -155,7 +155,8 @@ function cleanupFiles(...filePaths) {
 app.get("/health", (req, res) => {
   res.json({
     status: "ok",
-    message: "Backend de transcripción activo ✅",
+    
+    message: "Backend de transcripción activo ✅ actualizado ",
     language: SPEECH_LANGUAGE,
     timestamp: new Date().toISOString(),
   });
